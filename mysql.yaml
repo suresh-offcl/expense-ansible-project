@@ -5,6 +5,12 @@
     login_pass: "ExpenseApp@1"
     login_host: "mysql.khanishkcosmetics.store"
   tasks:
+  - name: installing PyMySQL
+    ansible.builtin.pip:
+      name:
+      - PyMySQL
+      executable: pip3.9
+      
   - name: install mysql server
     ansible.builtin.package:
       name: mysql-server
