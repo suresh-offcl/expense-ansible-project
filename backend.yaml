@@ -15,7 +15,13 @@
     ansible.builtin.package:
       name: nodejs
       state: present
-  
+  - name: ansible to install pymysql
+    ansible.builtin.pip:
+      name:
+      - PyMySQL
+      - cryptography
+      executable: pip3.9
+      
   - name: adding user
     ansible.builtin.user:
       name: expense
