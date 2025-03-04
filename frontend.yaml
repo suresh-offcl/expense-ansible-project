@@ -11,7 +11,7 @@
   - name: enabling nginx
     ansible.builtin.service:
       name: nginx
-      state: present
+      state: started
       enabled: yes
 
   - name: remove html direcorty
