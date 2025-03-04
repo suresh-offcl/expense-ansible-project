@@ -48,15 +48,13 @@
       src: backend.service
       dest: /etc/systemd/system/backend.service
 
-  
-
 - name: Import schema into MySQL
   community.mysql.mysql_db:
-    name: mydatabase  # Target database
-    target: /app/schema/backend.sql  # Path to your schema file
+    
     login_user: root
     login_host: "{{ login_host }}"
     login_password: "{{ login_password }}"
+    target: /app/schema/backend.sql  # Path to your schema file
     name: all
     state: import
 
