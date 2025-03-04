@@ -13,15 +13,13 @@
 
   - name: installing nodejs
     ansible.builtin.package:
-      name: nodejs
+      name: "{{ item }}"
       state: present
-  - name: ansible to install pymysql
-    ansible.builtin.pip:
-      name:
-      - PyMySQL
-      - cryptography
-      executable: pip3.9
-      
+    loop:
+      - nodejs
+      - mysql
+  
+
   - name: adding user
     ansible.builtin.user:
       name: expense
@@ -51,6 +49,13 @@
     ansible.builtin.copy:
       src: backend.service
       dest: /etc/systemd/system/backend.service 
+
+  - name: ansible to install pymysql
+    ansible.builtin.pip:
+      name:
+      - PyMySQL
+      - cryptography
+      executable: pip3.9
   
   - name: import mysql data 
     community.mysql.mysql_db:
